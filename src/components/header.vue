@@ -16,7 +16,7 @@ function close() {
 
 
 <template>
-    <div class="header w-full bg-amber-500 p-1 px-5 flex items-center justify-between">
+    <div class="header w-full h-fit bg-amber-500 p-1 px-5 flex items-center justify-between">
 
         <div class="wrapper flex items-center gap-2">
             <img :src="logo" alt="reddot logo" class="w-14 rounded-full">

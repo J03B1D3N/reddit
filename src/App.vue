@@ -4,6 +4,7 @@ import "./assets/main.css"
 import Header from "./components/header.vue"
 import Main from "./components/main.vue"
 import Nav from "./components/nav.vue"
+import "./App.css"
 </script>
 
 <template>

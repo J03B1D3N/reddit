@@ -1,0 +1,10 @@
+.postButton {
+   border: 2px solid transparent; 
+   padding: 0.5rem;
+}
+.postButton:hover {
+    border: 2px solid white; 
+ }
+ .title {
+    font-size: 1.5rem;
+ }

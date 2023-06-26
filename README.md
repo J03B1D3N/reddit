@@ -1,47 +1,55 @@
-# todo-vue
+ok so Reddit clone - Reddot
 
-This template should help get you started developing with Vue 3 in Vite.
+we need to have subreddits
 
-## Recommended IDE Setup
+we need to have the main page.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+in the main page when the user is not logged in, we'll have a bunch of random posts from various subreddits.
+user wont have the ability to write or interact with posts/comments.
 
-## Type Support for `.vue` Imports in TS
+once the user is loggeged in the main page will include posts from subreddits they have subscribed to.
+it will also include a submit form which will let them write a text post or a picture post or both, and upload it to a 
+subreddit they have subscribed to.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+if the user is a new account, we will ask them to choose a bunch of subbredits that they like.
+which means we need to create a bunch of subbredits with random content.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+the structure of the firestore should be:
 
-## Customize configuration
+Reddot --> subreddits ->> posts
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+and also
 
-## Project Setup
+Reddot --> users --> their data.
 
-```sh
-npm install
-```
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
 
-```sh
-npm run build
-```
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
-# reddit
+then the display algorithm for unconeccted people is display posts form all of the subreddits 1 by 1
+
+for connected user have a home and explore tabs.
+
+display for connected user is diplay all the posts from their chosen subreddits 1 by 1
+
+
+stucture of a post:
+
+
+subreddit: which subredit was it posted to || user that posted the post || when did they post
+title: title text || tag (discussion, question ...)
+img?
+data: some text
+likes: number
+coments: object[]
+
+share and save buttons.
+
+
+
+
+
+

@@ -11,3 +11,6 @@
  .likeArrow {
    height: 20px;
  }
+ a:hover {
+   color: rgb(178, 171, 171);
+ }

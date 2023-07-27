@@ -82,11 +82,13 @@ function handleSignOut() {
 
 <template>
     <div class="header w-full h-fit bg-amber-500 p-1 px-5 flex items-center justify-between">
+      <RouterLink :to="{name: 'Home'}">
 
         <div class="wrapper flex items-center gap-2">
             <img :src="logo" alt="reddot logo" class="w-14 rounded-full">
             <div class="title text-3xl">REDDOT</div>
         </div>
+      </RouterLink>
 
         <div class="wrapper flex justify-around gap-3">
             <button class="bg-white hover:bg-slate-300 font-bold py-2 px-4 rounded">Get App</button>

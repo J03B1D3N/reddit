@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import kitten from "../assets/kitten.webp"
-import likeArrowSvg from "../svgs/arrow-up-svgrepo-com.svg"
+import uniqId from "uniqid"
+import { usePostData } from '@/stores/postData';
+
+const postData = usePostData()
 // subreddit: which subredit was it posted to || user that posted the post || when did they post
 // title: title text && tag (discussion, question ...)
 // img?
@@ -9,7 +12,11 @@ import likeArrowSvg from "../svgs/arrow-up-svgrepo-com.svg"
 // coments: object[]
 
 // share and save buttons.
+
+
+
 type postType = {
+    id: string,
     subreddit: string,
     op: string,
     title:string,
@@ -18,9 +25,11 @@ type postType = {
     likes: number,
     comments: object[],
     shares: number
-}
+} 
+
 
 const post:postType = {
+    id: uniqId(),
     subreddit: "r/cats",
     op: "what-the-fric",
     title: "How cute is little doozer over here?",
@@ -30,6 +39,26 @@ const post:postType = {
     comments: [],
     shares: 15
 }
+const posts = [post]
+
+function setPostData(post:postType) {
+    postData.update({
+        id: post.id,
+        subreddit: post.subreddit,
+        op: post.op,
+        title: post.title,
+        data: post.data,
+        img: post.img,
+        likes: post.likes,
+        comments: post.comments,
+        shares: post.shares
+    })
+}
+    
+    
+    
+    
+    
 
 
 
@@ -39,10 +68,12 @@ const post:postType = {
 <template>
 
 
-    <div class="post border-solid rounded border-black border-2 p-5 text-white bg-zinc-800">
+    <div v-for="post in posts" :key="post.id" class="post border-solid rounded border-black border-2 p-5 text-white bg-zinc-800">
         <a href="#" class="sub">{{ post.subreddit }}</a>    
         <div class="title font-bold">{{ post.title }}</div> 
-        <img :src="post.img" alt="image of the user" class="max-w-md max-h-md">
+        <RouterLink :to="{name: 'postDetail', params: {id: post.id}}" @click="setPostData(post)">
+            <img :src="post.img" alt="image of the user" class="max-w-md max-h-md">
+        </RouterLink>
         <div class="socials flex justify-between mt-2 items-center">
             <div class="likes flex gap-1 items-center">
                 <button class="postButton">

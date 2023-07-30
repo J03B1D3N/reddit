@@ -29,7 +29,7 @@
             <!-- //text input -->
             <form v-if="signedIn.status" action="post" id="form" class="flex flex-col gap-1">
                 <label for="comment">comment as {{ user?.email }}</label>
-                <textarea ref="textArea" v-model="input" name="comment" id="comment" cols="30" rows="5" class="w-full p-1 bg-inherit border border-white rounded" placeholder="What are your thougts?"></textarea>
+                <textarea v-model="input" name="comment" id="comment" cols="30" rows="5" class="w-full p-1 bg-inherit border border-white rounded" placeholder="What are your thougts?"></textarea>
                 <button @click="handlePost"  class="bg-orange-600 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded">Post</button>
             </form>
 
@@ -86,8 +86,15 @@ type commentType = {
 
 function handlePost(e:Event) {
     e.preventDefault();
-    postData.comments = [...postData.comments, {id: uniqId(), data: input.value, op: user.email, likes:0}]
-    input.value = ''
+    if(input.value === "") {
+        alert('You need to type something in order to post')
+        const commentInput = document.getElementById('comment')
+        commentInput?.focus()
+    } else {
+        postData.comments = [...postData.comments, {id: uniqId(), data: input.value, op: user.email, likes:0}]
+        input.value = ''
+    }
+   
 }
 
 

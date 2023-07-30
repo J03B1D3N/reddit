@@ -5,7 +5,7 @@ import Feed from './Feed.vue';
 
 
 <template>
-<div class="display bg-red-100 flex-1 flex flex-col items-center p-16">
+<div class="display bg-black flex-1 flex flex-col items-center p-16">
     <RouterView></RouterView>
 </div>
 </template>

@@ -14,3 +14,7 @@
  a:hover {
    color: rgb(178, 171, 171);
  }
+ .reply:hover {
+   border: 1px solid white;
+   cursor: pointer;
+ }

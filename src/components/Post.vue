@@ -23,7 +23,7 @@ type postType = {
     data: string,
     img: string,
     likes: number,
-    comments: object[],
+    comments: commentType[],
     shares: number
 } 
 
@@ -36,9 +36,18 @@ const post:postType = {
     data: "found this little guy out in the parking lot near the house. Going to take him in and make him a part of our family!",
     img: kitten,
     likes: 0,
-    comments: [],
+    comments: [{op: "what-the-fric", data: "what an angry little kitten", timestamp: 'aasdasdasd', likes: 20, id: uniqId()}],
     shares: 15
 }
+
+type commentType = {
+    op: string,
+    data: string,
+    timestamp: string,
+    likes: number,
+    id: string
+}
+
 const posts = [post]
 
 function setPostData(post:postType) {
@@ -68,7 +77,7 @@ function setPostData(post:postType) {
 <template>
 
 
-    <div v-for="post in posts" :key="post.id" class="post border-solid rounded border-black border-2 p-5 text-white bg-zinc-800">
+    <div v-for="post in posts" :key="post.id" class="post border-solid rounded border-white border-2 p-5 text-white bg-zinc-800">
         <a href="#" class="sub">{{ post.subreddit }}</a>    
         <div class="title font-bold">{{ post.title }}</div> 
         <RouterLink :to="{name: 'postDetail', params: {id: post.id}}" @click="setPostData(post)">

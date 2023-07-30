@@ -86,7 +86,7 @@ type commentType = {
 
 function handlePost(e:Event) {
     e.preventDefault();
-    postData.comments = [...postData.comments, {id: uniqId(), data: input.value, }]
+    postData.comments = [...postData.comments, {id: uniqId(), data: input.value, op: user.email, likes:0}]
     input.value = ''
 }
 

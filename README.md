@@ -50,6 +50,12 @@ share and save buttons.
 
 
 
+correct url rendering:
+
+on website render, I should get all of the posts saved to pinia. then on click, or url type, i should render the post using the correct url. meaning take the /:id and look for it in pinia, and once found, render it.
+
+
+
 
 
 

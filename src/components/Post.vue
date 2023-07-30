@@ -24,9 +24,17 @@ type postType = {
     img: string,
     likes: number,
     comments: commentType[],
-    shares: number
+    shares: number,
 } 
 
+const reply:commentType = {
+    op: "Jeff-Bezos", 
+    data: "I will sell him for profit", 
+    timestamp: 'aasdasdasd', 
+    likes: 20, 
+    id: uniqId(),
+    replies: []
+}
 
 const post:postType = {
     id: uniqId(),
@@ -36,9 +44,10 @@ const post:postType = {
     data: "found this little guy out in the parking lot near the house. Going to take him in and make him a part of our family!",
     img: kitten,
     likes: 0,
-    comments: [{op: "what-the-fric", data: "what an angry little kitten", timestamp: 'aasdasdasd', likes: 20, id: uniqId()}],
+    comments: [{op: "what-the-fric", data: "what an angry little kitten", timestamp: 'aasdasdasd', likes: 20, id: uniqId(), replies: [reply]}],
     shares: 15
 }
+
 
 type commentType = {
     op: string,
@@ -46,6 +55,7 @@ type commentType = {
     timestamp: string,
     likes: number,
     id: string
+    replies: commentType[]
 }
 
 const posts = [post]

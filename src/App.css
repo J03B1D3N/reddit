@@ -21,4 +21,7 @@
  .comment {
   border: 1px solid white;
   margin: 0.1rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: wrap;
  }

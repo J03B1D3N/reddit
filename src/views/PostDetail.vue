@@ -34,7 +34,7 @@
             </form>
 
             <!-- //comments -->
-            <div v-for="comment in postData.comments" v-bind:key="comment.id" class="p-2 text-white bg-zinc-800 w-3/5 flex flex-col gap-2 comment rounded">
+            <div v-for="comment in postData.comments" v-bind:key="comment.id" class="p-2 text-white bg-zinc-800 w-full flex flex-col gap-2 comment rounded">
                 <div class="text-xs">{{ comment.op }}</div>
                 <div>{{ comment.data }}</div>
                 <div class="flex items-center gap-1">

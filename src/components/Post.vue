@@ -33,7 +33,6 @@ const reply:commentType = {
     timestamp: 'aasdasdasd', 
     likes: 20, 
     id: uniqId(),
-    replies: []
 }
 
 const post:postType = {
@@ -44,7 +43,7 @@ const post:postType = {
     data: "found this little guy out in the parking lot near the house. Going to take him in and make him a part of our family!",
     img: kitten,
     likes: 0,
-    comments: [{op: "what-the-fric", data: "what an angry little kitten", timestamp: 'aasdasdasd', likes: 20, id: uniqId(), replies: [reply]}],
+    comments: [{op: "what-the-fric", data: "what an angry little kitten", timestamp: 'aasdasdasd', likes: 20, id: uniqId()}, reply],
     shares: 15
 }
 
@@ -55,7 +54,6 @@ type commentType = {
     timestamp: string,
     likes: number,
     id: string
-    replies: commentType[]
 }
 
 const posts = [post]

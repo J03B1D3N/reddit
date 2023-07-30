@@ -3,6 +3,7 @@ import logo from "../assets/Logo.webp"
 import { ref } from "vue";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
 import {provider, auth} from "../firebase"
+import { useSignedInStatus } from "@/stores/signedInstatus";
 
 
 const Dropdown = ref(false)
@@ -10,10 +11,10 @@ function handleDropdown() {
     Dropdown.value = !Dropdown.value
 }
 
-const signedIn = ref(false)
+const signedIn = useSignedInStatus()
 
 function setSignedIn(arg:boolean) {
-  signedIn.value = arg
+  signedIn.setStatus(arg)
 }
 
 function close() {
@@ -92,10 +93,10 @@ function handleSignOut() {
 
         <div class="wrapper flex justify-around gap-3">
             <button class="bg-white hover:bg-slate-300 font-bold py-2 px-4 rounded">Get App</button>
-            <button v-if="!signedIn" @click="handleSignIn" class="bg-orange-600 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded">Log In</button>
+            <button v-if="!signedIn.status" @click="handleSignIn" class="bg-orange-600 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded">Log In</button>
             <div class="relative inline-block text-left">
   <div>
-    <button v-if="signedIn" v-bind:class="[Dropdown ? 'bg-orange-900' : '']" @click="handleDropdown" @blur="close" type="button" class="inline-flex w-full justify-center items-center gap-x-1.5 bg-orange-600 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded" id="menu-button" aria-expanded="true" aria-haspopup="true">
+    <button v-if="signedIn.status" v-bind:class="[Dropdown ? 'bg-orange-900' : '']" @click="handleDropdown" @blur="close" type="button" class="inline-flex w-full justify-center items-center gap-x-1.5 bg-orange-600 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded" id="menu-button" aria-expanded="true" aria-haspopup="true">
       User
       <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
         <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
